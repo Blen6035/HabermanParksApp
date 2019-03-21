@@ -20,6 +20,23 @@ export class ParkData {
                 });
         });
     }
+    getFilteredParks(queryString){
+        return this.load().then(Parks => {
+            let theFilteredParks: any = [];
+
+            for (let thePark of Parks){
+                if (thePark.name.toLowerCase().indexOf(queryString.toLowerCase())
+                > -1) {theFilteredParks.push(thepark);
+                }
+            }
+            return theFilteredParks;
+        });
+        resetList(event) {
+            this.parkData.getParks().then(theResult => {
+                this.parks = theResult;
+            })
+        }
+    }
 
     constructor(public http: Http) {}
 }
